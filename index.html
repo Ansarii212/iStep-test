@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    .collapsible-section {
+      margin-bottom: 15px;
+    }
+
+    .section-header {
+      background-color: #8b4513;
+      color: white;
+      padding: 12px 16px;
+      cursor: pointer;
+      font-weight: bold;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 18px;
+      transition: background-color 0.3s ease;
+    }
+
+    .section-header:hover {
+      background-color: #a0522d;
+    }
+
+    .arrow {
+      transition: transform 0.3s ease;
+      font-size: 18px;
+    }
+
+    .section-header.active .arrow {
+      transform: rotate(180deg); /* يشير لأعلى عند الفتح */
+    }
+
+    .section-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.4s ease;
+      background-color: #f9f9f9;
+      padding: 0 16px;
+      border: 1px solid #ccc;
+      border-radius: 0 0 5px 5px;
+    }
+
+    .section-content.open {
+      max-height: 500px; /* أو حسب حجم المحتوى */
+      padding: 12px 16px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- قسم قابل للطي 1 -->
+<div class="collapsible-section">
+  <div class="section-header">
+    قسم القراءة <span class="arrow">&#9660;</span>
+  </div>
+  <div class="section-content">
+    <p>هذا محتوى قسم القراءة. يتم فتحه أو طيه عند الضغط على العنوان.</p>
+  </div>
+</div>
+
+<!-- قسم قابل للطي 2 -->
+<div class="collapsible-section">
+  <div class="section-header">
+    قسم الاستماع <span class="arrow">&#9660;</span>
+  </div>
+  <div class="section-content">
+    <p>هذا محتوى قسم الاستماع.</p>
+  </div>
+</div>
+
+<!-- قسم قابل للطي 3 -->
+<div class="collapsible-section">
+  <div class="section-header">
+    قسم القواعد <span class="arrow">&#9660;</span>
+  </div>
+  <div class="section-content">
+    <p>هذا محتوى قسم القواعد.</p>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('.section-header').forEach(header => {
+    header.addEventListener('click', () => {
+      const content = header.nextElementSibling;
+      content.classList.toggle('open');
+      header.classList.toggle('active');
+    });
+  });
+</script>
+
+</body>
+</html>
